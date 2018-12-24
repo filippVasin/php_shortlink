@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h1>{{ title }}</h1>
+    </div>
+    <div class="col-md-auto">
+
+    </div>
+    <div class="col col-lg-2">
+        <a href="/list.php">link list</a>
+    </div>
+</div>
+<form action="input_url.php" method="post">
+    <div class="form-group">
+        <label></label>
+        <input type="text"  class="form-control"s name="long_url" value=
+        {% if old.name != null %}
+            {{ old.long_url}}
+        {% endif %}
+        >
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Сократить</button>
+    </div>
+</form>
+
+{% include 'errors.html' %}
+{% include 'message.html' %}
+
+{% endblock %}

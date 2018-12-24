@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col">
+        <h1>{{ title }}</h1>
+    </div>
+    <div class="col-md-auto">
+
+    </div>
+    <div class="col col-lg-2">
+        <a href="/form.php">add link</a>
+    </div>
+</div>
+
+
+{% include 'errors.html' %}
+{% include 'message.html' %}
+
+<table class="table table-borderless">
+    <thead>
+    <tr>
+
+        <th scope="col">Короткая</th>
+        <th scope="col">Длинная</th>
+        <th scope="col">Дата создания</th>
+        <th scope="col">Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for url in urls %}
+         <tr>
+             <th scope="row"><a class="fancybox" rel="group" href="{{ url.short_url }}">{{ url.server_short_url }}</a></th>
+             <th scope="row"><a class="fancybox" rel="group" href="{{ url.long_url }}">{{ url.long_url }}</a></th>
+             <th scope="row">{{ url.create_date }}</th>
+             <th scope="row"><a href="delete.php?id={{ url.id }}">Удалить</a></th>
+         </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
